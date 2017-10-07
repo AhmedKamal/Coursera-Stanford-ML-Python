@@ -32,7 +32,7 @@ class resourceHandler():
             instance.email = credentials.readline().strip()
             instance.token = credentials.readline().strip()
             return True
-        except Exception, e:
+        except Exception as e:
             return False
 
 
@@ -44,7 +44,7 @@ class resourceHandler():
         while True:
             try:
                 filelist.append(filehandler.next())
-            except Exception, e:
+            except Exception as e:
                 return filelist
     def manual(self, excercise):
         path = 'res/'+excercise+'/manual.md'
@@ -159,8 +159,8 @@ class MainScreen(BoxLayout):
             self.submit_ob.__login=self.email
             self.submit_ob.__password=self.token
 
-        print 'Email',self.submit_ob.__login
-        print 'Token', self.submit_ob.__password
+        print('Email',self.submit_ob.__login)
+        print('Token', self.submit_ob.__password)
         self.submit_popup.dismiss()
         #TODO:submission call
         #self.show_error(self.submit_ob.submit())
@@ -173,7 +173,7 @@ class MainScreen(BoxLayout):
             current_file=current_file[:-1]
         self.current_file= current_file
         self.draw_screen()
-        print 'Current Exercise changed to: ', self.current_ex
+        print('Current Exercise changed to: ', self.current_ex)
 
 
 
@@ -208,13 +208,13 @@ class MainScreen(BoxLayout):
         return layout
 
     def saveAssignment(self,assignment,*largs):
-        print 'callback called'
+        print('callback called')
         try:
             if not self.element.readFile(self.current_ex,self.current_file)==assignment.text:
                 filehandler = self.element.writeFile(self.current_ex,self.current_file)
                 filehandler.write(assignment.text)
-                print 'INFO: Autosaved file'
-        except Exception, e:
+                print('INFO: Autosaved file')
+        except Exception as e:
             raise e
             self.show_error(e)
 
@@ -249,7 +249,7 @@ class MainScreen(BoxLayout):
             instance.text=instance.text[:-1]
         self.current_file = instance.text
         self.draw_screen()
-        print 'Current file changed to: ', self.current_file
+        print('Current file changed to: ', self.current_file)
 
     def show_error(self, e):
         self.info_label.text = str(e)
