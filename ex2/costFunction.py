@@ -1,4 +1,5 @@
 import numpy as np
+
 from sigmoid import sigmoid
 
 
@@ -18,5 +19,13 @@ def costFunction(theta, X, y):
     #
     # Note: grad should have the same dimensions as theta
     # =============================================================
+    #
+
+    Z = np.dot(X, theta)
+
+    hypothesis = sigmoid(Z)
+    part1 = np.dot((y - 1), np.log(1 - hypothesis))
+    part2 = np.dot(y, np.log(hypothesis))
+    J = (1 / m) * (part1 - part2)
 
     return J

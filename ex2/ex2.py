@@ -13,7 +13,6 @@ from predict import predict
 from show import show
 from ml import plotData, plotDecisionBoundary
 
-
 ## Machine Learning Online Class - Exercise 2: Logistic Regression
 #
 #  Instructions
@@ -115,4 +114,3 @@ acc = 1.0 * np.where(p == y)[0].size / len(p) * 100
 print('Train Accuracy: %f' % acc)
 
 input('Program paused. Press Enter to continue...')
-

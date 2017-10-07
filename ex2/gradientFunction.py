@@ -1,4 +1,5 @@
 import numpy as np
+
 from sigmoid import sigmoid
 
 
@@ -10,8 +11,11 @@ def gradientFunction(theta, X, y):
     gradient of the cost w.r.t. to the parameters.
     """
 
-    m = len(y)   # number of training examples
+    # grad = 1 / m * ((hypothesis - y)' * X)'
+    m = len(y)  # number of training examples
+    hypothesis = sigmoid(np.dot(X, theta))
 
+    grad = 1 / m * np.array(np.dot(np.array(hypothesis - y), X)).T
     # ====================== YOUR CODE HERE ======================
     # Instructions: Compute the gradient of a particular choice of theta.
     #               Compute the partial derivatives and set grad to the partial

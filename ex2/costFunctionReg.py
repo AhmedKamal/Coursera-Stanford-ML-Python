@@ -19,4 +19,4 @@ def costFunctionReg(theta, X, y, Lambda):
     #               derivatives of the cost w.r.t. each parameter in theta
     # =============================================================
 
-    return J
+    return costFunction(theta, X, y) + Lambda/(2*m) * np.sum(np.power(theta[1:], 2))
